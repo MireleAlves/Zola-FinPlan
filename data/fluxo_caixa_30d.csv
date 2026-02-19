@@ -1,0 +1,31 @@
+data,tipo,categoria,descricao,valor
+2026-02-01,entrada,Vendas,Recebimento clientes,3200
+2026-02-01,saida,Operacional,Aluguel,1200
+2026-02-02,saida,Operacional,Internet,150
+2026-02-03,entrada,Vendas,Recebimento clientes,2800
+2026-02-03,saida,Operacional,Fornecedor,900
+2026-02-04,saida,Marketing,Anuncios,300
+2026-02-05,entrada,Vendas,Recebimento clientes,2400
+2026-02-05,saida,Operacional,Fornecedor,650
+2026-02-07,saida,Pessoal,Pro-labore,1200
+2026-02-08,entrada,Vendas,Recebimento clientes,1800
+2026-02-09,saida,Financeiro,Taxas bancarias,80
+2026-02-10,saida,Operacional,Fornecedor,700
+2026-02-11,entrada,Vendas,Recebimento clientes,2600
+2026-02-12,saida,Operacional,Energia,220
+2026-02-13,saida,Marketing,Anuncios,350
+2026-02-14,entrada,Vendas,Recebimento clientes,2100
+2026-02-15,saida,Operacional,Fornecedor,500
+2026-02-16,saida,Operacional,Contabilidade,300
+2026-02-17,entrada,Vendas,Recebimento clientes,2900
+2026-02-18,saida,Pessoal,Salarios,2500
+2026-02-19,saida,Operacional,Fornecedor,800
+2026-02-20,entrada,Vendas,Recebimento clientes,3100
+2026-02-21,saida,Operacional,Manutencao,400
+2026-02-22,saida,Marketing,Anuncios,300
+2026-02-23,entrada,Vendas,Recebimento clientes,2300
+2026-02-24,saida,Operacional,Fornecedor,900
+2026-02-25,saida,Operacional,Software,180
+2026-02-26,entrada,Vendas,Recebimento clientes,2700
+2026-02-27,saida,Financeiro,Impostos,650
+2026-02-28,saida,Operacional,Transporte,200
