@@ -1,0 +1,6 @@
+{
+  "saldo_inicial": 20000,
+  "reserva_minima_desejada": 15000,
+  "meta_investimento": 10000,
+  "horizonte_dias": 30
+}
