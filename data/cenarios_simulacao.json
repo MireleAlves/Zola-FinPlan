@@ -1,0 +1,9 @@
+{
+  "cenario_marketing": {
+    "investimento": 10000,
+    "retorno_estimado_percentual": 15
+  },
+  "cenario_contratacao": {
+    "custo_mensal": 4000
+  }
+}
