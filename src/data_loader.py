@@ -1,21 +1,23 @@
 import json
 import pandas as pd
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent  # volta da pasta src para raiz do projeto
+DATA_DIR = BASE_DIR / "data"
 
 def carregar_dados():
-    dados = {}
+    fluxo_caixa = pd.read_csv(DATA_DIR / "fluxo_caixa_30d.csv")
+    custos_fixos = pd.read_csv(DATA_DIR / "custos_fixos.csv")
 
-    # CSVs
-    dados["transacoes"] = pd.read_csv("data/transacoes.csv")
-    dados["fluxo_30d"] = pd.read_csv("data/fluxo_caixa_30d.csv")
+    with open(DATA_DIR / "metas_empresa.json", "r", encoding="utf-8") as f:
+        metas = json.load(f)
 
-    # JSONs
-    with open("data/perfil_empresa.json", "r", encoding="utf-8") as f:
-        dados["perfil_empresa"] = json.load(f)
+    with open(DATA_DIR / "cenarios_simulacao.json", "r", encoding="utf-8") as f:
+        cenarios = json.load(f)
 
-    with open("data/metas_empresa.json", "r", encoding="utf-8") as f:
-        dados["metas"] = json.load(f)
-
-    with open("data/parametros_financeiros.json", "r", encoding="utf-8") as f:
-        dados["parametros"] = json.load(f)
-
-    return dados
+    return {
+        "fluxo_caixa": fluxo_caixa,
+        "custos_fixos": custos_fixos,
+        "metas": metas,
+        "cenarios": cenarios
+    }
