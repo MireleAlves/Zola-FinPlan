@@ -1,5 +1,7 @@
-categoria,valor_mensal
-Salarios,10000
-Aluguel,5000
-Software,1200
-Internet,300
+categoria,valor_mensal,observacao
+Aluguel,1200,Contrato mensal
+Salarios,2500,Equipe reduzida
+Internet,150,Plano empresarial
+Software,180,Ferramentas de trabalho
+Contabilidade,300,Servicos contabeis
+Pro-labore,1200,Retirada do fundador
