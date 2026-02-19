@@ -1,0 +1,7 @@
+data,tipo,categoria,valor,recorrente
+2026-02-01,Receita,Vendas,30000,true
+2026-02-03,Despesa,Salarios,10000,true
+2026-02-05,Despesa,Aluguel,5000,true
+2026-02-08,Despesa,Marketing,4000,false
+2026-02-12,Receita,Servicos,8000,false
+2026-02-15,Despesa,Fornecedores,3000,false
