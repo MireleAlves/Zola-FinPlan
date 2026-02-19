@@ -1,9 +1,31 @@
 {
-  "cenario_marketing": {
-    "investimento": 10000,
-    "retorno_estimado_percentual": 15
-  },
-  "cenario_contratacao": {
-    "custo_mensal": 4000
-  }
+  "cenarios": [
+    {
+      "nome": "Aumentar marketing",
+      "descricao": "Investir em anúncios para aumentar demanda",
+      "impacto": {
+        "tipo": "saida_unica",
+        "categoria": "Marketing",
+        "valor": 1500
+      }
+    },
+    {
+      "nome": "Contratar assistente",
+      "descricao": "Nova contratação com custo fixo mensal",
+      "impacto": {
+        "tipo": "saida_mensal",
+        "categoria": "Pessoal",
+        "valor": 1800
+      }
+    },
+    {
+      "nome": "Comprar equipamento",
+      "descricao": "Compra à vista para aumentar capacidade produtiva",
+      "impacto": {
+        "tipo": "saida_unica",
+        "categoria": "Operacional",
+        "valor": 2500
+      }
+    }
+  ]
 }
