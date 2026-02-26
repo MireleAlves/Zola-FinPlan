@@ -1,8 +1,6 @@
 # Base de Conhecimento — Zola FinPlan
 
-Este documento descreve a base de conhecimento utilizada pelo agente **Zola FinPlan**, com foco em **fluxo de caixa**, **metas**, **custos fixos** e **simulação de cenários em 30 dias**.
-
-
+Este documento descreve a base de conhecimento e o modelo de construção de contexto utilizados pela **Zola FinPlan** para projeção de **Fluxo de Caixa** e **Simulações** estruturada de cenários financeiros em horizonte de **30** dias.
 
 ## 1) Dados Utilizados
 
@@ -15,8 +13,7 @@ Este documento descreve a base de conhecimento utilizada pelo agente **Zola FinP
 
 
 > [!NOTE]
-> **Dados mockados**: são dados fictícios e controlados, criados apenas para simular comportamentos reais sem expor informações sensíveis de empresas.
-
+> **Dados mockados**: são dados fictícios e controlados, criados apenas para simular comportamentos financeiro, sem exposição de dados empresariais reais.
 
 ## 2) Adaptações e Modelagem dos Dados
 
@@ -24,41 +21,65 @@ Este documento descreve a base de conhecimento utilizada pelo agente **Zola FinP
 - Datas em formato ISO: `YYYY-MM-DD`
 - Valores numéricos em `valor` (sem símbolo de moeda)
 - Tipos de lançamento: `entrada` e `saida`
-- Separação entre **fluxo operacional** e **estrutura fixa** (custos fixos)
+- Separação entre:
+  - Fluxo operacional (movimentações)
+  - Estrutura fixa (custos recorrentes)
+  - Regras de governaças (metas)
 
 ### Por que separar custos fixos do fluxo?
-Porque custos fixos permitem:
-- projeção consistente de caixa (mesmo sem dados diários perfeitos)
-- comparação do “peso” estrutural sobre a receita
-- simulações mais realistas (ex.: contratação aumenta custo fixo)
+A separação permite:
+- Projeção consistente de caixa (mesmo sem dados diários perfeitos)
+- Comparação do “peso” estrutural sobre a receita
+- Simulações mais realistas (ex.: contratação aumenta custo fixo)
+- Classificação adequada da reserva mínima
 
 
 ## 3) Estratégia de Integração no Agente
 
 ### Carregamento de Dados
-Os arquivos CSV/JSON são carregados no início da sessão e transformados em:
-- resumo de caixa (saldo, entradas, saídas)
-- total de custos fixos
-- regras (metas e limites)
-- catálogo de cenários para simulação
+Os arquivos CSV/JSON são carregados via módulo:
+`data_Loader.py`
 
-### Construção do Contexto
-O agente recebe um **contexto estruturado**, com:
-- visão consolidada do período (30 dias)
-- regras de governança (reserva mínima e prioridades)
-- cenário solicitado pelo usuário (ex.: “investir X”)
+### No início da sessão, são transformados em:
+- Entradas totais do período
+- Saídas totais do período
+- Saldo projetado
+- Total de custos fixos
+- Reserva mínima configurada
+  
+### Construção do Contexto Calculado
+Antes da chamada ao modelo, o sistema constrói um contexto determinístico contendo:
+- saldo_liquido
+- reserva_minima
+- folga_reserva
+- deficit_reserva
+- reserva_ok (booleano)
+  
+Esse contexto é usado tanto para o painel quanto para a simulação.
 
+### Pipeline de Processamento
+A arquitetura segue um fluxo híbrido:
+ 1. Identificação de intenção (Simulação ou Aula)
+ 2. Em Simulação:
+  - Parser determinístico extrai valor e tipo de ação
+  - Planner classifica intenção (NOVA_SAIDA / NOVA_ENTRADA)
+  - FinCalc aplica cálculo determinístico
+  - Redactor gera análise apenas com base no contexto calculado
+3. Em Aula:
+  - Resposta estruturada e conceitual
+    
 ### Injeção no Modelo
-
-A base de conhecimento é carregada dinamicamente via módulo `data_loader.py`.
-
-O agente não utiliza dados fixos no prompt.  
-Os dados são carregados, resumidos e injetados no contexto antes da chamada ao modelo.
-
-
-> [!TIP]
-> O agente é orientado a responder apenas com base nesse contexto e pedir dados adicionais quando necessário.
-
+O modelo LLM recebe:
+  - CONTEXTO_ATUAL
+  - CONTEXTO_CENARIO (quando aplicável)
+  - PLANO_CENARIO
+  - PEDIDO_USUARIO
+O modelo é instruído a:
+  - Não criar novos números
+  - Não recalcular valores
+  - Não contradizer reserva_ok
+  - Não executar transações
+  - Solicitar dados quando insuficientes
 
 ## 4) Exemplo de Contexto Montado (entrada para a LLM)
 
@@ -71,26 +92,19 @@ Reserva mínima de caixa: 8000
 Fluxo de caixa (resumo):
 - Entradas totais: 23900
 - Saídas totais: 12160
-- Saldo projetado: 11740
-
-Custos fixos mensais:
-- Total: 5530
-- Principais: Aluguel (1200), Salários (2500), Pró-labore (1200)
+- Saldo líquido: 11740
+- Folga de reserva: 3740
+- Reserva OK: true
 
 Cenário solicitado:
-- "Aumentar marketing" (saída única de 1500)
-
-Regras:
-- Prioridade: manter liquidez
-- Limite de endividamento mensal: 1500
-
-Solicitação do usuário:
-- "Zola, posso investir 1500 em marketing agora?"
-
+- Investimento único em marketing de 1500
+O modelo recebe apenas esses valores estruturados e gera análise comparativa.
 ```
 
-## 5) Observações de Segurança e Escopo
-- Dados mockados (não há dados bancários reais).
-- O agente não executa transações.
--  Recomendações são apoio à decisão, não substituem contador/consultoria regulatória.
--  Quando o contexto for insuficiente, o agente deve responder: “Informação insuficiente” e solicitar dados.
+## 5) Segurança e Limitações
+- Processamento local via Ollama (sem envio para APIs externas)
+- Dados fictícios para fins educacionais
+- O agente não executa transações
+- Não substitui contador ou consultor financeiro
+- Não realiza projeções especulativas
+- Quando o contexto é insuficiente, solicita parâmetros adicionais
