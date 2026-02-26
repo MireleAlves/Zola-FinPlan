@@ -1,11 +1,11 @@
 # Zola FinPlan
-### Inteligência Estruturada para Decisões Financeiras Empresariais
+### Infraestrutura para Decisões Financeiras Operacionais
 
  ## 1. Sumário Executivo
 
-A Zola FinPlan é um assistente de apoio à decisão empresarial focado em organização de fluxo de caixa e simulação de cenários financeiros em horizonte de 30 dias.
+A Zola FinPlan é um assistente de apoio à decisão empresarial voltado à organização de fluxo de caixa e simulação estruturada de cenários financeiros em horizonte de 30 dias.
 
-Seu objetivo é transformar dados operacionais em análise estruturada, permitindo decisões mais previsíveis e fundamentadas.
+Seu objetivo é transformar dados operacionais em análise previsível e estruturada, permitindo decisões fundamentadas e com controle de risco.
 
  ## 2. Problema
 
@@ -22,10 +22,11 @@ Consequências:
 A Zola FinPlan organiza decisões financeiras por meio de:
 - Projeção de fluxo de caixa (30 dias)
 - Simulação de cenários (“E se eu investir X?”)
-- Identificação de risco de liquidez
+- Classificação estruturada da reserva mínima (Atendida / Parcial / Zerada)
+- Análise comparativa entre cenário atual e cenário proposto
 
 As respostas seguem estrutura padronizada:
-> Cenário Atual → Riscos → Recomendação → Próximos Passos
+> Cenário Atual → Riscos Identificados → Análise Estruturada → Próximos Passos
 
 ## 4. Público-Alvo
 - Pequenos empresários
@@ -36,47 +37,45 @@ As respostas seguem estrutura padronizada:
 ## 5. Identidade do Agente
 
 Persona: Consultor financeiro estratégico
-Tom: Profissional, objetivo e analítico
+Tom: Profissional, objetivo, analítico e estruturado
+Comportamento:
+ - Não inventa números
+ - Não realiza cálculos fora do pipeline determinístico
+ - Não mistura explicação conceitual com simulação
 
 ## 6. Arquitetura Técnica
 
-A solução foi projetada com foco em processamento local e confidencialidade.
+A solução foi projetada com foco em previsibilidade, processamento local e confidencialidade.
 
 #### Fluxo de Dados
 ```mermaid
 flowchart TD
   User[Usuário] --> UI[Interface Streamlit]
-  UI --> Process[Camada de Processamento Python]
-  Process --> Data[(Base de Conhecimento: CSV/JSON Mockado)]
-  Process --> Ollama[LLM Local via Ollama]
-  Ollama --> Model[Llama3 ou Mistral]
-  Model --> Output[Análise Estruturada]
+  UI --> Process[Python]
+  Process --> Data[Pipeline determinístico Planner -> FinCalc]
+  Process --> Ollama[(Fluxo de caixa e parâmetros operacionais)]
+  Ollama --> Model[LLM Local via Ollama3]
+  Model --> Output[Análise Estruturada e Controlada]
   Output --> UI
   UI --> User
 
 ``` 
-### Stack Tecnológica
-
-|Componente |Descrição|
-|------------|-----------|
-| Interface | Streamlit |
-| Processamento | Python |
-| Base de Conhecimento | Dados mockados empresariais |
-| LLM | Modelo local via Ollama |
-| Output | Análise estruturada|
-
 ## 7. Estratégia de Funcionamento
-1. Usuário informa cenário financeiro
-2. Sistema consulta dados mockados
-3. Prompt estruturado é gerado
-4. LLM local processa a análise
-5. Resposta é entregue no formato padronizado
-
+ 1. Usuário informa cenário ou conceito.
+ 2. Sistema identifica modo (Simulação ou Aula).
+ 3. Em simulação:
+    - Planner classifica intenção.
+    - FinCalc aplica cálculo determinístico.
+    - Redactor gera análise baseada apenas no contexto calculado.
+ 4. Em modo aula:
+     - Resposta estruturada e objetiva.
+       
 ## 8. Segurança e Limitações
 - Processamento local (dados não enviados para APIs externas)
 - Não substitui contador ou consultor financeiro
 - Não executa transações
 - Depende da qualidade dos dados inseridos
+- Não gera projeções especulativas fora do contexto fornecido
 
 ## Proposta de Valor
 
