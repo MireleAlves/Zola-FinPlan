@@ -1,96 +1,66 @@
-# Pitch (3 minutos)
-Zola FinPlan — Inteligência Estruturada para Decisões Financeiras
+# Pitch — Zola FinPlan
 
-## 1. O Problema (30 segundos)
+## 1. O Problema
 
-Pequenas e médias empresas frequentemente tomam decisões financeiras sem projeção clara de liquidez.
+Pequenas e médias empresas tomam decisões financeiras diariamente sem simular o impacto dessas decisões no fluxo de caixa.
 
-Decisões como:
-- contratar um funcionário
-- investir em marketing
-- realizar uma compra relevante
+Ações como investir em marketing, contratar funcionários ou aumentar custos operacionais parecem simples, mas podem comprometer a liquidez do negócio quando não há projeção estruturada do caixa.
 
-são feitas com base em sensação e não em simulação estruturada.
+Muitas empresas não possuem estrutura financeira ou um CFO para analisar essas decisões com antecedência, o que aumenta o risco de endividamento, falta de previsibilidade e perda de controle financeiro.
 
-O resultado pode ser:
-- comprometimento do caixa
-- perda da reserva mínima
-- aumento do risco operacional
-- falta de previsibilidade
 
-O problema não é falta de dados.
-É falta de organização da decisão.
 
-## 2. A Solução (1 minuto)
+## 2. A Solução
 
-A Zola FinPlan é um assistente de apoio à decisão financeira com arquitetura híbrida.
+A Zola FinPlan é um agente de apoio à decisão financeira desenvolvido para ajudar gestores a avaliar impactos financeiros antes de agir.
 
-Ela funciona em três camadas:
--  Cálculo determinístico de fluxo de caixa (30 dias)
--  Simulação estruturada de cenários
--  Análise comparativa controlada por regras anti-alucinação
+A solução projeta o fluxo de caixa em um horizonte de 30 dias, valida a reserva mínima de segurança e permite simular cenários como investimentos ou novas despesas.
 
-O sistema:
-- Calcula saldo líquido
-- Verifica reserva mínima
-- Classifica risco de liquidez
-- Gera análise estruturada com:
-   - Cenário Atual
-   - Riscos Identificados
-   - Análise Estruturada
-   - Próximos Passos
+A arquitetura combina cálculos determinísticos realizados pelo sistema com um modelo de linguagem controlado, que interpreta o cenário dentro de um contexto já calculado.
 
-A Zola não faz contas no modelo de linguagem.
-Os cálculos são determinísticos.
-O modelo apenas interpreta dentro do contexto controlado.
+Isso permite gerar análises estruturadas e comparativas sem inventar números ou produzir respostas inconsistentes.
 
-Isso reduz risco de alucinação e mantém coerência financeira.
 
-## 3. Demonstração (1 minuto)
 
-Durante a demonstração, será mostrado:
-- O painel financeiro com status da reserva
-- A pergunta:
-   "Zola, posso investir 1500 em marketing agora?"
-- O sistema:
-  - interpreta a intenção
-  - aplica cálculo determinístico
-  - gera análise comparativa estruturada
+## 3. Demonstração
 
-Em seguida, será demonstrado:
-- Um cenário que viola a reserva mínima
-- A mudança de classificação de risco
-- O impacto na estrutura de liquidez
+Durante a demonstração são apresentados os principais componentes da solução.
 
-Também será mostrado o modo aula:
+Primeiro é exibido o painel financeiro, que consolida entradas, saídas, custos fixos e a reserva mínima de caixa utilizada para análise.
 
-Exemplo:
-"Qual a diferença entre custos fixos e variáveis?"
+Em seguida, é demonstrada a interação com o agente, iniciando com uma saudação simples para mostrar o funcionamento da interface conversacional.
 
-O agente responde em formato conceitual estruturado, separado da simulação.
+Depois é realizada uma simulação prática, perguntando se é possível contratar um funcionário com determinado salário. O sistema identifica a intenção da decisão, aplica o cálculo no fluxo de caixa projetado e gera uma análise comparando o cenário atual com o cenário proposto.
 
-## 4. Diferencial e Impacto (30 segundos)
+Também é apresentado um exemplo de explicação conceitual, em que o agente responde sobre a diferença entre custos fixos e variáveis.
 
-O diferencial da Zola FinPlan está em:
-- Arquitetura híbrida (determinística + LLM)
-- Controle de alucinação
-- Estrutura fixa obrigatória de resposta
-- Foco em reserva mínima como âncora de governança
+Por fim, são demonstrados recursos da interface, como limpar o histórico da conversa e ocultar o painel financeiro para focar na análise.
 
-Impacto:
-- Reduz decisões impulsivas
-- Aumenta previsibilidade operacional
-- Incentiva disciplina financeira
-- Democratiza acesso a análise estruturada para pequenas empresas
 
-Zola não é um chatbot.
-É infraestrutura para decisão.
 
-## Checklist do Pitch
+## 4. Diferencial e Impacto
 
-- [x]  Duração aproximada: 2min30 a 3min
-- [x] Problema claro
-- [x] Solução estruturada
-- [x] Demonstração prática
-- [x] Diferencial técnico explicado
-- [x] Linguagem profissional
+O diferencial da Zola FinPlan está na arquitetura da solução.
+
+O sistema utiliza uma abordagem híbrida que combina cálculo determinístico com um modelo de linguagem controlado.
+
+Os cálculos financeiros são realizados diretamente pelo sistema, enquanto o modelo de linguagem atua apenas na interpretação do contexto já estruturado. Essa separação reduz o risco de alucinação e mantém coerência nas análises geradas.
+
+Outro ponto central da solução é o uso da reserva mínima de caixa como âncora de governança financeira. Todas as simulações consideram esse limite como referência para avaliar risco de liquidez.
+
+Isso permite que pequenas empresas organizem decisões financeiras antes da execução, aumentando previsibilidade e reduzindo riscos operacionais.
+
+Zola FinPlan não é apenas um chatbot.
+
+É uma infraestrutura para decisões financeiras empresariais.
+
+
+## Vídeo de Demonstração
+
+O vídeo de apresentação da solução pode ser acessado no link abaixo:
+
+https://drive.google.com/file/d/1Ymqs6nyEtL0k-JznxqyVB39UitN2dZs-/view?usp=drive_link
+
+## Proposta de Valor
+
+**Zola FinPlan — Infraestrutura para decisões financeiras empresariais.**
